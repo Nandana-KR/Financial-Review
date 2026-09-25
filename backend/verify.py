@@ -29,7 +29,7 @@ from app.pnl import compute_all_pnls, list_periods  # noqa: E402
 
 
 def main() -> int:
-    path = sys.argv[1] if len(sys.argv) > 1 else "transactions.xlsx"
+    path = sys.argv[1] if len(sys.argv) > 1 else os.path.join(os.path.dirname(__file__), "..", "NYC Restaurant Co. - Raw Transactions.xlsx")
     if not os.path.exists(path):
         print(f"File not found: {path}")
         return 1

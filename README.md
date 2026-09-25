@@ -44,16 +44,14 @@ Open your browser to **http://localhost:5173**
 
 ---
 
-## Sample Data
+## Your Data
 
-If you don't have a file ready, generate a sample:
+Upload your own Excel file (`.xlsx` or `.csv`) with columns like:
+- Date
+- Description
+- Amount
 
-```powershell
-cd backend
-.\.venv\Scripts\python.exe sample_data.py
-```
-
-This creates `transactions.xlsx` — upload that to try the app.
+The app automatically detects the columns.
 
 ---
 
