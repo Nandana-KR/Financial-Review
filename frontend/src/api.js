@@ -1,7 +1,10 @@
-// Thin API client. All calls go to the FastAPI backend via the Vite proxy (/api).
+// Thin API client. All calls go to the FastAPI backend.
+// In local dev, Vite proxies /api → http://127.0.0.1:8000.
+// In production (Vercel), VITE_API_URL must be set to the backend URL.
+const BASE = import.meta.env.VITE_API_URL || "";
 
 async function req(path, options = {}) {
-  const res = await fetch(`/api${path}`, {
+  const res = await fetch(`${BASE}/api${path}`, {
     headers: { "Content-Type": "application/json" },
     ...options,
   });
@@ -25,7 +28,7 @@ export const api = {
   ingest: async (file, replace = true) => {
     const form = new FormData();
     form.append("file", file);
-    const res = await fetch(`/api/ingest?replace=${replace}`, {
+    const res = await fetch(`${BASE}/api/ingest?replace=${replace}`, {
       method: "POST",
       body: form,
     });

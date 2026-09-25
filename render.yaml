@@ -1,0 +1,16 @@
+services:
+  - type: web
+    name: finz-backend
+    runtime: python
+    rootDir: backend
+    buildCommand: pip install -r requirements.txt
+    startCommand: uvicorn app.main:app --host 0.0.0.0 --port $PORT
+    envVars:
+      - key: FINZ_LLM_PROVIDER
+        value: none
+      - key: FINZ_LLM_API_KEY
+        value: ""
+      - key: FINZ_LLM_MODEL
+        value: ""
+      - key: PYTHON_VERSION
+        value: "3.11.0"
