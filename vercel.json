@@ -3,7 +3,10 @@
   "builds": [
     {
       "src": "backend/api/index.py",
-      "use": "@vercel/python"
+      "use": "@vercel/python",
+      "config": {
+        "maxLambdaSize": "15mb"
+      }
     },
     {
       "src": "frontend/package.json",
@@ -22,5 +25,9 @@
       "src": "/(.*)",
       "dest": "frontend/$1"
     }
-  ]
+  ],
+  "env": {
+    "FINZ_DB_PATH": "/tmp/finz.db",
+    "FINZ_LLM_PROVIDER": "none"
+  }
 }

@@ -1,7 +1,7 @@
 // Thin API client. All calls go to the FastAPI backend.
-// In local dev, Vite proxies /api → http://127.0.0.1:8000.
-// In production (Vercel), both frontend and backend are on the same domain.
-const BASE = "";
+// In local dev, Vite proxies /api → http://127.0.0.1:8000 (BASE = "").
+// In production, VITE_API_URL points to the Railway backend domain.
+const BASE = import.meta.env.VITE_API_URL || "";
 
 async function req(path, options = {}) {
   const res = await fetch(`${BASE}/api${path}`, {
